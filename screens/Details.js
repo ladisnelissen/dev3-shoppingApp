@@ -2,8 +2,25 @@ import React from "react";
 import { StyleSheet, Text, View, Pressable, Image} from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import DOMParser from 'react-native-html-parser'
+
+const parser = new DOMParser.DOMParser();
 
 function DetailsScreen({ navigation, route }, ) {
+
+    //function to trim description from html tags
+    const trimDescription = (description) => {
+        const parsedDescription = parser.parseFromString(description, 'text/html');
+        const parsedDescriptionText = parsedDescription.documentElement.textContent;
+        //stop at continue reading and trim last 4 characters
+        const parsedDescriptionTextTrimmed = parsedDescriptionText.substring(0, parsedDescriptionText.indexOf("Continue reading") - 3);
+
+
+        
+        
+        return parsedDescriptionTextTrimmed;
+    }
+
     
     const storeNewItem = async () => {
         try {
@@ -33,6 +50,7 @@ function DetailsScreen({ navigation, route }, ) {
             <Text style = {styles.title}>{route.params.itemTitle}</Text>
             <Image style = {styles.imagestyle} source={{uri: route.params.itemImage}}  />
             <Text>{route.params.itemMeta}</Text>
+            <Text style = {styles.descText}>{trimDescription(route.params.itemDescription)}</Text>
 
             <Pressable style={styles.productbutton} onPress={() => storeNewItem()}>
                 <Text style={styles.buttontext}>Add to cart</Text>
@@ -77,6 +95,15 @@ function DetailsScreen({ navigation, route }, ) {
           marginTop: 20,
 
         },
+        descText: {
+          marginTop: 20,
+          fontSize: 15,
+          //add margin to left and right
+          marginHorizontal:40,
+          alignContent: 'center',
+          textAlign: 'center',
+
+        }
 
       });
 
