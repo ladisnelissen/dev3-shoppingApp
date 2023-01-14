@@ -11,7 +11,7 @@ const ShoppingItem = itemprops => {
                 <Text style={styles.text}>{itemprops.title}</Text>
                 <Text style={styles.itemprice}>{itemprops.metadata}</Text>
                 <Pressable style={styles.productbutton} onPress={() => navigation.navigate("Details", 
-                {itemTitle: itemprops.title, itemID: itemprops.itemid, itemMeta: itemprops.metadata, itemImage: itemprops.metaimage})}>
+                {itemTitle: itemprops.title, itemID: itemprops.itemid, itemMeta: itemprops.metadata, itemImage: itemprops.metaimage, ItemDesc: itemprops.excerpt})}>
                     <Text style={styles.buttontext}>Details</Text>
                 </Pressable>
             </View>

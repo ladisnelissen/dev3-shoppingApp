@@ -10,18 +10,19 @@ function DetailsScreen({ navigation, route }, ) {
             await AsyncStorage.setItem("@newCartItem", JSON.stringify(route.params)).then(
                 navigation.navigate("CartScreen", {cartData: route.params})
             );
+            //console log data
+            console.log(route.params);
         } catch (error) {
             console.log(error);
         }
-
     }
 
     return (
         <View style={styles.screen}>
-            <Text>{route.params.itemTitle}</Text>
+            <Text style = {styles.title}>{route.params.itemTitle}</Text>
             <Image style = {styles.imagestyle} source={{uri: route.params.itemImage}}  />
             <Text>{route.params.itemMeta}</Text>
-            
+
 
             <Pressable style={styles.productbutton} onPress={() => storeNewItem()}>
                 <Text style={styles.buttontext}>Add to cart</Text>
@@ -38,6 +39,11 @@ function DetailsScreen({ navigation, route }, ) {
             alignItems: 'center',
             justifyContent: 'flex-start',
 
+        },
+        title: {
+            fontSize: 20,
+            fontWeight: 'bold',
+            marginTop: 20,
         },
         imagestyle: {
             width: 250,

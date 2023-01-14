@@ -41,7 +41,6 @@ function HomeScreen({ navigation }) {
               title={item.title.rendered}
               metaimage={item.yoast_head_json.og_image[0].url}
               metadata={item.yoast_head_json.og_description}
-
             />
 
             )
