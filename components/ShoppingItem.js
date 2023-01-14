@@ -4,6 +4,7 @@ import {useNavigation} from '@react-navigation/native';
 const ShoppingItem = itemprops => {
     const navigation = useNavigation();
 
+
     return (
         <View style={styles.listItem}>
             <View>

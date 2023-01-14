@@ -10,6 +10,7 @@ function DetailsScreen({ navigation, route }, ) {
             const existingDataJSON = await AsyncStorage.getItem("@newCartItem");
             const existingDataArray = JSON.parse(existingDataJSON) || [];
             if (existingDataArray.find((item) => item.itemID === route.params.itemID)) {
+                alert("Item already in cart");
                 return;
             }
             existingDataArray.push(route.params);

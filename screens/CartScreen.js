@@ -39,6 +39,8 @@ const CartScreen = ({ navigation, route }) => {
             <Pressable style={styles.productbutton} onPress={() => clearCart()}>
                 <Text style={styles.buttonClear}>Clear cart</Text>
             </Pressable>
+            
+
             <FlatList
                 data={cartData} 
                 keyExtractor={(item) => item.itemID}
@@ -50,6 +52,10 @@ const CartScreen = ({ navigation, route }) => {
                     />
                 )}
             />
+
+            <Pressable style={styles.productbutton} onPress={() => navigation.navigate("orderScreen")}>
+                <Text style={styles.buttonOrder}>Order</Text>
+            </Pressable>
         </View>
     );
 }
@@ -77,6 +83,14 @@ const CartScreen = ({ navigation, route }) => {
         padding: 10,
         borderRadius: 10,
         marginTop: 20,
+        },
+        buttonOrder: {
+        fontSize: 10,
+        fontWeight: 'bold',
+        color: 'black',
+        border: '1px solid black',
+        padding: 10,
+        borderRadius: 10,
         },
     });
 
