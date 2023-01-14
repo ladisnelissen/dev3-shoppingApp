@@ -7,21 +7,29 @@ function DetailsScreen({ navigation, route }, ) {
     
     const storeNewItem = async () => {
         try {
-            await AsyncStorage.setItem("@newCartItem", JSON.stringify(route.params)).then(
-                navigation.navigate("CartScreen", {cartData: route.params})
-            );
+            const existingDataJSON = await AsyncStorage.getItem("@newCartItem");
+            const existingDataArray = JSON.parse(existingDataJSON) || [];
+            if (existingDataArray.find((item) => item.itemID === route.params.itemID)) {
+                return;
+            }
+            existingDataArray.push(route.params);
+            const newDataJSON = JSON.stringify(existingDataArray);
+            await AsyncStorage.setItem("@newCartItem", newDataJSON);
             //console log data
-            console.log(route.params);
+            console.log(existingDataArray);
+            navigation.navigate("CartScreen", {cartData: route.params})
         } catch (error) {
             console.log(error);
         }
     }
-
+    
+    
     return (
         <View style={styles.screen}>
             <Text style = {styles.title}>{route.params.itemTitle}</Text>
             <Image style = {styles.imagestyle} source={{uri: route.params.itemImage}}  />
             <Text>{route.params.itemMeta}</Text>
+            <Text>{route.params.itemDescription}</Text>
 
 
             <Pressable style={styles.productbutton} onPress={() => storeNewItem()}>

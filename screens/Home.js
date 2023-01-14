@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { StyleSheet, Text, View, Button, Pressable, FlatList } from "react-native";
+import { StyleSheet, Text, View, Button, Pressable, FlatList, Image } from "react-native";
 
 import ShoppingItem from "../components/ShoppingItem";
 
@@ -28,8 +28,8 @@ function HomeScreen({ navigation }) {
 
     return (
         <View style={styles.container}>
-        <Pressable onPress={() => navigation.navigate("Details")}>
-            <Text>Let's get shopping</Text>
+        <Pressable style={styles.cartbutton} onPress={() => navigation.navigate("CartScreen")}>
+            <Text>test</Text>
         </Pressable>
 
         <FlatList 
@@ -38,6 +38,8 @@ function HomeScreen({ navigation }) {
           renderItem={({item}) =>
         (
             <ShoppingItem
+              itemID={item.id}
+              description={item.excerpt.rendered}
               title={item.title.rendered}
               metaimage={item.yoast_head_json.og_image[0].url}
               metadata={item.yoast_head_json.og_description}
@@ -60,6 +62,14 @@ function HomeScreen({ navigation }) {
           alignItems: 'center',
           justifyContent: 'center',
         },
+        cartbutton: {
+            position: "absolute",
+            top: 50,
+            right: 20,
+            width: 50,
+            height: 50,
+        }
+                
       });
 
 export default HomeScreen;

@@ -11,7 +11,7 @@ const ShoppingItem = itemprops => {
                 <Text style={styles.text}>{itemprops.title}</Text>
                 <Text style={styles.itemprice}>{itemprops.metadata}</Text>
                 <Pressable style={styles.productbutton} onPress={() => navigation.navigate("Details", 
-                {itemTitle: itemprops.title, itemID: itemprops.itemid, itemMeta: itemprops.metadata, itemImage: itemprops.metaimage, ItemDesc: itemprops.excerpt})}>
+                {itemTitle: itemprops.title, itemID: itemprops.itemID, itemMeta: itemprops.metadata, itemImage: itemprops.metaimage, itemDescription: itemprops.description})}>
                     <Text style={styles.buttontext}>Details</Text>
                 </Pressable>
             </View>
@@ -37,13 +37,14 @@ const ShoppingItem = itemprops => {
             borderRadius: 10,
         },
         imagestyle: {
-            width: 100,
-            height: 100,
+            width: 160,
+            height: 160,
             borderRadius: 10,
         },
         text: {
             fontSize: 20,
             fontWeight: 'bold',
+            alignContent: 'center',
         },
         itemprice: {
             fontSize: 20,
