@@ -26,11 +26,12 @@ function DetailsScreen({ navigation, route }, ) {
     
     return (
         <View style={styles.screen}>
+          <Pressable onPress={() => navigation.navigate('CartScreen')}>
+            <Image style={styles.cart} source={require('../assets/cart.png')}/>
+          </Pressable>
             <Text style = {styles.title}>{route.params.itemTitle}</Text>
             <Image style = {styles.imagestyle} source={{uri: route.params.itemImage}}  />
             <Text>{route.params.itemMeta}</Text>
-            <Text>{route.params.itemDescription}</Text>
-
 
             <Pressable style={styles.productbutton} onPress={() => storeNewItem()}>
                 <Text style={styles.buttontext}>Add to cart</Text>
@@ -67,6 +68,13 @@ function DetailsScreen({ navigation, route }, ) {
         buttontext: {
             color: 'white',
             fontSize: 20,
+        },
+        cart: {
+          //add cart in header
+          width: 25,
+          height: 25,
+          marginTop: 20,
+
         },
 
       });

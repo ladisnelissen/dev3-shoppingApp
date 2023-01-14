@@ -37,7 +37,7 @@ const CartScreen = ({ navigation, route }) => {
         <View style={styles.container}>
             <Text style={styles.title}>Cart</Text>
             <Pressable style={styles.productbutton} onPress={() => clearCart()}>
-                <Text style={styles.buttontext}>Clear cart</Text>
+                <Text style={styles.buttonClear}>Clear cart</Text>
             </Pressable>
             <FlatList
                 data={cartData} 
@@ -67,6 +67,15 @@ const CartScreen = ({ navigation, route }) => {
         title: {
         fontSize: 20,
         fontWeight: 'bold',
+        marginTop: 20,
+        },
+        buttonClear: {
+        fontSize: 10,
+        fontWeight: 'bold',
+        color: 'black',
+        border: '1px solid black',
+        padding: 10,
+        borderRadius: 10,
         marginTop: 20,
         },
     });

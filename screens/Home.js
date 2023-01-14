@@ -28,9 +28,10 @@ function HomeScreen({ navigation }) {
 
     return (
         <View style={styles.container}>
-        <Pressable style={styles.cartbutton} onPress={() => navigation.navigate("CartScreen")}>
-            <Text>test</Text>
-        </Pressable>
+
+          <Pressable onPress={() => navigation.navigate('CartScreen')}>
+            <Image style={styles.cartImage} source={require('../assets/cart.png')}/>
+          </Pressable>
 
         <FlatList 
           data={data}
@@ -68,6 +69,12 @@ function HomeScreen({ navigation }) {
             right: 20,
             width: 50,
             height: 50,
+        },
+        cartImage: {
+            width: 25,
+            height: 25,
+            marginTop: 20,
+            marginBottom: 20,
         }
                 
       });
