@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, Pressable, FlatList } from "react-native";
 
-
+import ShoppingItem from "../components/ShoppingItem";
 
 function HomeScreen({ navigation }) {
 
@@ -25,17 +25,34 @@ function HomeScreen({ navigation }) {
     }, []);
 
 
-    
+
     return (
         <View style={styles.container}>
-        <Text>Home Screen</Text>
-        <Button
-            title="Go to Details"
-            onPress={() => navigation.navigate("Details")}
+        <Pressable onPress={() => navigation.navigate("Details")}>
+            <Text>Let's get shopping</Text>
+        </Pressable>
+
+        <FlatList 
+          data={data}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({item}) =>
+        (
+            <ShoppingItem
+              title={item.title.rendered}
+              metaimage={item.yoast_head_json.og_image[0].url}
+              metadata={item.yoast_head_json.og_description}
+
+            />
+
+            )
+          }
         />
+
+
         </View>
     );
     }
+
 
     const styles = StyleSheet.create({
         container: {
