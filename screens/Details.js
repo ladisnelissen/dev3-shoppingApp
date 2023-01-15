@@ -29,6 +29,8 @@ function DetailsScreen({ navigation, route }, ) {
             if (existingDataArray.find((item) => item.itemID === route.params.itemID)) {
                 alert("Item already in cart");
                 return;
+            } else {
+              alert("Item added to cart")
             }
             existingDataArray.push(route.params);
             const newDataJSON = JSON.stringify(existingDataArray);
@@ -49,7 +51,7 @@ function DetailsScreen({ navigation, route }, ) {
           </Pressable>
             <Text style = {styles.title}>{route.params.itemTitle}</Text>
             <Image style = {styles.imagestyle} source={{uri: route.params.itemImage}}  />
-            <Text>{route.params.itemMeta}</Text>
+            <Text style = {styles.price}>{route.params.itemMeta}</Text>
             <Text style = {styles.descText}>{trimDescription(route.params.itemDescription)}</Text>
 
             <Pressable style={styles.productbutton} onPress={() => storeNewItem()}>
@@ -103,7 +105,14 @@ function DetailsScreen({ navigation, route }, ) {
           alignContent: 'center',
           textAlign: 'center',
 
-        }
+        },
+        price: {
+          marginTop: 20,
+          fontSize: 30,
+          fontWeight: 'bold',
+        },
+
+
 
       });
 

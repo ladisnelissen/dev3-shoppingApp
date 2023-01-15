@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
+
 const CartItem = cartProps => {
     const navigation = useNavigation();
 
@@ -12,7 +14,6 @@ const CartItem = cartProps => {
                 <Image style = {styles.imagestyle} source={{uri: cartProps.itemImage}}  />
                 <Text style={styles.text}>{cartProps.itemTitle}</Text>
                 <Text style={styles.itemprice}>{cartProps.itemMeta}</Text>
-
             </View>
         </View>
     );

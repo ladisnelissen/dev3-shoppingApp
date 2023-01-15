@@ -24,8 +24,6 @@ function HomeScreen({ navigation }) {
         getData();
     }, []);
 
-
-
     return (
         <View style={styles.container}>
 

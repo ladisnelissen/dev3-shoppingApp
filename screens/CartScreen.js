@@ -27,6 +27,7 @@ const CartScreen = ({ navigation, route }) => {
     const clearCart = async () => {
         try {
             await AsyncStorage.setItem("@newCartItem", JSON.stringify([]));
+            alert("Cart cleared, navigation to homepage")
             navigation.navigate("Home")
         } catch (error) {
             console.log(error);
@@ -85,12 +86,13 @@ const CartScreen = ({ navigation, route }) => {
         marginTop: 20,
         },
         buttonOrder: {
-        fontSize: 10,
+        fontSize: 20,
         fontWeight: 'bold',
         color: 'black',
         border: '1px solid black',
         padding: 10,
         borderRadius: 10,
+        margin: 10,
         },
     });
 
