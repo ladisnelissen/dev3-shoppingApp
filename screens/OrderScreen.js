@@ -55,6 +55,11 @@ const orderScreen = ({ navigation, route }) => {
                     />
                 )}
             />
+
+            <Pressable style={styles.productbutton} onPress={() => navigation.navigate("Home")}>
+                <Text style={styles.buttonOrder}>Back to homepage</Text>
+            </Pressable>
+
         </View>
     );
 
@@ -67,6 +72,29 @@ const orderScreen = ({ navigation, route }) => {
           backgroundColor: '#fff',
           alignItems: 'center',
         },
+        title: {
+          fontSize: 25,
+          fontWeight: 'bold',
+          marginTop: 20,
+        },
+        total: {
+          fontSize: 15,
+          fontWeight: 'bold',
+          marginTop: 20,
+        },
+        productbutton: {
+          backgroundColor: '#000',
+          padding: 10,
+          borderRadius: 5,
+          marginTop: 20,
+        },
+        buttonOrder: {
+          color: '#fff',
+          fontSize: 15,
+          fontWeight: 'bold',
+        },
+        
+
       });
 
 
